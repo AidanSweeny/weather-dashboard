@@ -15,31 +15,33 @@
 <body>
     <div class="jumbotron jumbotron-fluid bg-dark mb-3">
         <div class="container">
-            <h1 class="display-4 text-white text-center">Weather</h1>
+            <h1 class="display-4 text-white text-center h1">Weather</h1>
         </div>
     </div>
     <h2 class = "m-3">Search for a City: </h2>
-    <div class = "weather container row">
-        <div class="input-group mb-5 col-md-3">
-            <input type="text" id= "citySearch"class="form-control" placeholder="City">
-            <div class="input-group-append">
-                <button id = "searchBtn"class="fa fa-search bg-primary text-white input-group-text" aria-hidden="true"></button>
+    <div class = "row">
+        <div class =  "col-md-3">
+            <div class="input-group">
+                <input type="text" id="citySearch"class="form-control ml-3" placeholder="City">
+                <button id = "searchBtn" class="fa fa-search bg-primary text-white input-group-text" style = "height:39px"></button>
+            </div>
+            <div id = "cities" class="btn-group-vertical m-3" style = "width:100%"></div>
+        </div>
+        <div class = "cityWeather col-md-9">
+            <h2 id = "cityName" class = "h2"></h2>
+            <p id = "temperature"></p>
+            <p id = "humidity"></p>
+            <p id = "windSpeed"></p>
+            <p id = "uvIdx"></p>
+            <div class = "dayForcast">
+                <h3 class = "5day"></h3>
             </div>
         </div>
-        <div class = "cityWeather">
-            <h2 class = "cityName"></h2>
-            <p class = "temperature">Temperature: </p>
-            <p class = "humidity">Humidity: </p>
-            <p class = "windSpeed">Wind Speed: </p>
-            <p class = "uvIdx">UV Index: </p>
-        </div>
-        <div class = "dayForcast"></div>
     </div>
-    <div class = "container row">
-        <div id = "cities" class="btn-group-vertical col-md-3">
-        </div>
-    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src = "script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
