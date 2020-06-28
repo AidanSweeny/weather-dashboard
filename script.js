@@ -19,7 +19,19 @@ $(document).ready(function() {
         })).then(function(response) {
             latitude = response.city.coord.lat;
             longitude = response.city.coord.lon;
-            done = true;
+            console.log(response.list)
+            for (var i=0; i<response.list.length; i = i + 8){
+                var div = $("<div>");
+                div.addClass("container col-md-2");
+                var day = $("<h4>");
+                day.text(response.list[i].dt_txt.split(" ")[0]);
+                var temp = $("<p>");
+                temp.text("Temp: " + response.list[i].main.temp);
+                var humid = $("<p>");
+                humid.text("Humidity: " + response.list[i].main.humidity);
+                div.append(day, temp, humid);
+                $("#5day").append(div);
+            }
 
         // Here we are building the URL we need to query the database
         console.log(latitude);
@@ -35,18 +47,6 @@ $(document).ready(function() {
             $("#temperature").text("Temperature: " + response.current.temp + " F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
             $("#uvIdx").text("UV Index: " + response.current.uvi);
-            var queryURL = "api.openweathermap.org/data/2.5/forecast?q={city name}&appid=" + A
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function(response) {
-    
-                $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
-                $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
-                $("#temperature").text("Temperature: " + response.current.temp + " F");
-                $("#humidity").text("Humidity: " + response.current.humidity + "%");
-                $("#uvIdx").text("UV Index: " + response.current.uvi);
-            });
         });
         });
         
