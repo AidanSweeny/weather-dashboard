@@ -19,12 +19,7 @@ $(document).ready(function() {
             console.log(response.list)
             $("#5day").text("5-Day Forecast");
             $(".dayForecast").empty()
-            // Make the 5 day based on the time it is right now
-            // UV index in colors
-            // Cloud icon next to name of city
-            // Local storage 
-            // Change format of 5-day date
-            for (var i=3; i<response.list.length; i = i + 8){
+            for (var i=0; i<response.list.length; i = i + 8){
                 var div = $("<div>");
                 div.addClass("container col-md-2 bg-primary rounded");
                 var day = $("<h4>");
@@ -53,7 +48,7 @@ $(document).ready(function() {
         }).then(function(response) {
 
             $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
-            $("#cityName").append("<img src='" + response.current.weather[0].icon  + ".png'>");
+            $("#cityName").append("<img style = 'width: 70px;' src='" + response.current.weather[0].icon  + ".png'>");
             $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
             $("#temperature").text("Temperature: " + response.current.temp + " F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
@@ -84,11 +79,8 @@ $(document).ready(function() {
             console.log(response.list)
             $("#5day").text("5-Day Forecast");
             $(".dayForecast").empty()
-            // Make the 5 day based on the time it is right now
-            // Make it so when you  search it displays the data
-            // Cloud icon next to name of city
-            // Local storage 
-            for (var i=3; i<response.list.length; i = i + 8){
+            console.log(response.list);
+            for (var i=0; i<response.list.length; i = i + 8){
                 var div = $("<div>");
                 div.addClass("container col-md-2 bg-primary rounded");
                 var day = $("<h4>");
@@ -116,7 +108,7 @@ $(document).ready(function() {
         }).then(function(response) {
 
             $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
-            $("#cityName").append("<img src='" + response.current.weather[0].icon  + ".png'>");
+            $("#cityName").append("<img style = 'width: 70px;' src='" + response.current.weather[0].icon  + ".png'>");
             $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
             $("#temperature").text("Temperature: " + response.current.temp + " F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
