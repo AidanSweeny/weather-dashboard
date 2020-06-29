@@ -1,10 +1,28 @@
 $(document).ready(function() {
+    // localStorage.clear();
+    var cityArray = JSON.parse(localStorage.getItem("cities"));
+    if(cityArray !== null){
+        for(var i=0; i<cityArray.length; i++){
+            var button = $("<button>");
+            button.text(cityArray[i]);
+            button.addClass("cityBtn btn btn-light");
+            $("#cities").append(button);
+        }
+    }
+    else {
+        cityArray = [];
+    }
+    $("#clear").on("click", function(){
+        localStorage.clear();
+        $("#cities").empty();
+    });
     $("#searchBtn").on("click", function(event) {
         var city = $("#citySearch").val();
         var button = $("<button>");
+        cityArray.push(city);
+        localStorage.setItem("cities", JSON.stringify(cityArray));
         button.text(city);
         button.addClass("cityBtn btn btn-light");
-        console.log(city)
         $("#cities").append(button);
         var APIKey = "166a433c57516f51dfab1f7edaed8413";
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=imperial&appid=" + APIKey;
@@ -16,7 +34,6 @@ $(document).ready(function() {
         })).then(function(response) {
             latitude = response.city.coord.lat;
             longitude = response.city.coord.lon;
-            console.log(response.list)
             $("#5day").text("5-Day Forecast");
             $(".dayForecast").empty()
             for (var i=0; i<response.list.length; i = i + 8){
@@ -32,15 +49,12 @@ $(document).ready(function() {
                 humid.text("Humidity: " + response.list[i].main.humidity);
                 humid.addClass("m-3 text-white");
                 var img = $("<img>");
-                console.log(response.list[i].weather[0].icon)
                 img.attr("src",  response.list[i].weather[0].icon  + ".png");
                 div.append(day, img, temp, humid);
                 $(".dayForecast").append(div);
             }
 
         // Here we are building the URL we need to query the database
-        console.log(latitude);
-        console.log(longitude);
         var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + APIKey;
         $.ajax({
             url: queryURL,
@@ -76,10 +90,8 @@ $(document).ready(function() {
         })).then(function(response) {
             latitude = response.city.coord.lat;
             longitude = response.city.coord.lon;
-            console.log(response.list)
             $("#5day").text("5-Day Forecast");
             $(".dayForecast").empty()
-            console.log(response.list);
             for (var i=0; i<response.list.length; i = i + 8){
                 var div = $("<div>");
                 div.addClass("container col-md-2 bg-primary rounded");
@@ -99,8 +111,6 @@ $(document).ready(function() {
             }
 
         // Here we are building the URL we need to query the database
-        console.log(latitude);
-        console.log(longitude);
         var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=imperial&appid=" + APIKey;
         $.ajax({
             url: queryURL,
@@ -121,7 +131,6 @@ $(document).ready(function() {
                 $(".uvIdxColor").css({"background-color": "green", "color":"white"});
             }
         });
-        });
-        
+        });  
     })
 });
