@@ -45,10 +45,10 @@ $(document).ready(function() {
                 day.text(response.list[i].dt_txt.split(" ")[0]);
                 day.addClass("m-3 text-white");
                 var temp = $("<p>");
-                temp.text("Temp: " + response.list[i].main.temp);
+                temp.text("Temp: " + response.list[i].main.temp + " \u00B0F");
                 temp.addClass("m-3 text-white")
                 var humid = $("<p>");
-                humid.text("Humidity: " + response.list[i].main.humidity);
+                humid.text("Humidity: " + response.list[i].main.humidity + "%");
                 humid.addClass("m-3 text-white");
                 var img = $("<img>");
                 img.attr("src",  response.list[i].weather[0].icon  + ".png");
@@ -66,7 +66,7 @@ $(document).ready(function() {
             $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
             $("#cityName").append("<img style = 'width: 70px;' src='" + response.current.weather[0].icon  + ".png'>");
             $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
-            $("#temperature").text("Temperature: " + response.current.temp + " F");
+            $("#temperature").text("Temperature: " + response.current.temp + " \u00B0F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
             $("#uvIdx").text("UV Index: ");
             $("#uvIdx").append("<span class = 'uvIdxColor'>" + response.current.uvi + "</span>");
@@ -102,10 +102,10 @@ $(document).ready(function() {
                 day.text(response.list[i].dt_txt.split(" ")[0]);
                 day.addClass("m-3 text-white")
                 var temp = $("<p>");
-                temp.text("Temp: " + response.list[i].main.temp);
+                temp.text("Temp: " + response.list[i].main.temp + " \u00B0F");
                 temp.addClass("m-3 text-white")
                 var humid = $("<p>");
-                humid.text("Humidity: " + response.list[i].main.humidity);
+                humid.text("Humidity: " + response.list[i].main.humidity + "%");
                 humid.addClass("m-3 text-white")
                 var img = $("<img>");
                 img.attr("src",  response.list[i].weather[0].icon  + ".png");
@@ -123,7 +123,7 @@ $(document).ready(function() {
             $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
             $("#cityName").append("<img style = 'width: 70px;' src='" + response.current.weather[0].icon  + ".png'>");
             $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
-            $("#temperature").text("Temperature: " + response.current.temp + " F");
+            $("#temperature").text("Temperature: " + response.current.temp + " \u00B0F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
             $("#uvIdx").text("UV Index: ");
             $("#uvIdx").append("<span class = 'uvIdxColor'>" + response.current.uvi + "</span>");
