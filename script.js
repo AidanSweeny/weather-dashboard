@@ -5,7 +5,7 @@ $(document).ready(function() {
         for(var i=0; i<cityArray.length; i++){
             var button = $("<button>");
             button.text(cityArray[i]);
-            button.addClass("cityBtn btn btn-light");
+            button.addClass("cityBtn btn btn-light mb-1");
             $("#cities").append(button);
         }
     }
@@ -17,6 +17,7 @@ $(document).ready(function() {
         $("#cities").empty();
     });
     $("#searchBtn").on("click", function(event) {
+        $(".cityWeather").addClass("bg-secondary rounded")
         var city = $("#citySearch").val();
         var button = $("<button>");
         cityArray.push(city);
@@ -79,6 +80,7 @@ $(document).ready(function() {
     })
 
     $("#cities").on("click", function(event) {
+        $(".cityWeather").addClass("bg-secondary rounded");
         var city = event.target.textContent
         var APIKey = "166a433c57516f51dfab1f7edaed8413";
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=imperial&appid=" + APIKey;
