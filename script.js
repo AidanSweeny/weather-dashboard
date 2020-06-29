@@ -20,17 +20,30 @@ $(document).ready(function() {
             latitude = response.city.coord.lat;
             longitude = response.city.coord.lon;
             console.log(response.list)
-            for (var i=0; i<response.list.length; i = i + 8){
+            $("#5day").text("5-Day Forecast");
+            $(".dayForecast").empty()
+            // Make the 5 day based on the time it is right now
+            // Make it so when you  search it displays the data
+            // UV index in colors
+            // Cloud icon next to name of city
+            // Local storage
+            for (var i=3; i<response.list.length; i = i + 8){
                 var div = $("<div>");
-                div.addClass("container col-md-2");
+                div.addClass("container col-md-2 bg-primary rounded");
                 var day = $("<h4>");
                 day.text(response.list[i].dt_txt.split(" ")[0]);
+                day.addClass("m-3 text-white")
                 var temp = $("<p>");
                 temp.text("Temp: " + response.list[i].main.temp);
+                temp.addClass("m-3 text-white")
                 var humid = $("<p>");
                 humid.text("Humidity: " + response.list[i].main.humidity);
-                div.append(day, temp, humid);
-                $("#5day").append(div);
+                humid.addClass("m-3 text-white")
+                var img = $("<img>");
+                console.log(response.list[i].weather[0].icon)
+                img.attr("src",  response.list[i].weather[0].icon  + ".png");
+                div.append(day, img, temp, humid);
+                $(".dayForecast").append(div);
             }
 
         // Here we are building the URL we need to query the database
