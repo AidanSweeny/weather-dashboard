@@ -18,13 +18,13 @@ $(document).ready(function() {
         cityArray = [];
     });
     $("#searchBtn").on("click", function(event) {
-        $(".cityWeather").addClass("bg-secondary rounded")
+        $(".cityWeather").addClass("bg-secondary rounded");
         var city = $("#citySearch").val();
         var button = $("<button>");
         cityArray.push(city);
         localStorage.setItem("cities", JSON.stringify(cityArray));
         button.text(city);
-        button.addClass("cityBtn btn btn-light");
+        button.addClass("cityBtn btn btn-light mb-1");
         $("#cities").append(button);
         var APIKey = "166a433c57516f51dfab1f7edaed8413";
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=imperial&appid=" + APIKey;
