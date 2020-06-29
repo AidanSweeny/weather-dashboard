@@ -15,6 +15,7 @@ $(document).ready(function() {
     $("#clear").on("click", function(){
         localStorage.clear();
         $("#cities").empty();
+        cityArray = [];
     });
     $("#searchBtn").on("click", function(event) {
         $(".cityWeather").addClass("bg-secondary rounded")
