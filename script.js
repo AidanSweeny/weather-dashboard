@@ -53,6 +53,7 @@ $(document).ready(function() {
         }).then(function(response) {
 
             $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
+            $("#cityName").append("<img src='" + response.current.weather[0].icon  + ".png'>");
             $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
             $("#temperature").text("Temperature: " + response.current.temp + " F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
@@ -85,7 +86,6 @@ $(document).ready(function() {
             $(".dayForecast").empty()
             // Make the 5 day based on the time it is right now
             // Make it so when you  search it displays the data
-            // UV index in colors
             // Cloud icon next to name of city
             // Local storage 
             for (var i=3; i<response.list.length; i = i + 8){
@@ -101,7 +101,6 @@ $(document).ready(function() {
                 humid.text("Humidity: " + response.list[i].main.humidity);
                 humid.addClass("m-3 text-white")
                 var img = $("<img>");
-                console.log(response.list[i].weather[0].icon)
                 img.attr("src",  response.list[i].weather[0].icon  + ".png");
                 div.append(day, img, temp, humid);
                 $(".dayForecast").append(div);
@@ -117,6 +116,7 @@ $(document).ready(function() {
         }).then(function(response) {
 
             $("#cityName").text(city + " (" + moment().format("dddd, MMMM Do YYYY")+ ")");
+            $("#cityName").append("<img src='" + response.current.weather[0].icon  + ".png'>");
             $("#windSpeed").text("Wind Speed: " + response.current.wind_speed + " MPH");
             $("#temperature").text("Temperature: " + response.current.temp + " F");
             $("#humidity").text("Humidity: " + response.current.humidity + "%");
